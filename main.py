@@ -1,6 +1,8 @@
-from flask import Flask, request, make_response, redirect
+from flask import Flask, request, make_response, redirect, render_template
 
 app = Flask(__name__)
+
+items = ["item1","item2","item3","item4","item5",]
 
 @app.route("/index")
 def index():
@@ -12,8 +14,10 @@ def index():
 @app.route("/mostrar_ip")
 def show_information():
     user_ip = request.cookies.get("tu_ip")
-    return f"klk mio, es esta tu ip?: {user_ip}"
-
-
+    context = {
+        "user_ip" : user_ip,
+        "items" : items
+    }
+    return render_template("index.html", **context)
 
 app.run(host='0.0.0.0', port=8080, debug=True)

@@ -1,0 +1,13 @@
+{% if user_ip %}
+    <h2>klk mio tu ip es esta de casualidad?? {{user_ip}} , malparido gonorrea </h2>
+
+{% else %}
+    <a href="{{ url_for('index') }}"> Crear kuki</a>
+
+{% endif %}
+
+<ul>
+{% for item in items %}
+    <li> {{item}} </li>
+{% endfor %}
+</ul>
